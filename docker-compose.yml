@@ -10,6 +10,7 @@ services:
       - INSTAGRAM_PASSWORD=${INSTAGRAM_PASSWORD}
       - SESSION_FILE_PATH=/app/sessions/
       - API_PORT=8000
+      - APP_API_KEY=${APP_API_KEY}
     volumes:
       - ./sessions:/app/sessions
     restart: unless-stopped

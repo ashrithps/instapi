@@ -100,40 +100,48 @@ Mark a thread as seen/read
 
 ## Usage Example
 
+**Important**: All endpoints require an API key in the `X-API-Key` header.
+
 1. First, authenticate (without 2FA):
 ```bash
 curl -X POST "http://localhost:8000/auth/login" \
   -H "Content-Type: application/json" \
-  -d '{"username": "your_username", "password": "your_password"}'
+  -H "X-API-Key: your_secure_api_key_here" \
+  -d '{"verification_code": ""}'
 ```
 
 1b. If 2FA is required, authenticate with verification code:
 ```bash
 curl -X POST "http://localhost:8000/auth/login" \
   -H "Content-Type: application/json" \
-  -d '{"username": "your_username", "password": "your_password", "verification_code": "123456"}'
+  -H "X-API-Key: your_secure_api_key_here" \
+  -d '{"verification_code": "123456"}'
 ```
 
 2. Send a DM:
 ```bash
 curl -X POST "http://localhost:8000/dm/send?session_id=your_username" \
   -H "Content-Type: application/json" \
+  -H "X-API-Key: your_secure_api_key_here" \
   -d '{"recipient_username": "target_user", "message": "Hello!"}'
 ```
 
 3. Read DM threads:
 ```bash
-curl -X GET "http://localhost:8000/dm/threads?session_id=your_username&limit=10"
+curl -X GET "http://localhost:8000/dm/threads?session_id=your_username&limit=10" \
+  -H "X-API-Key: your_secure_api_key_here"
 ```
 
 4. Read messages from a specific thread:
 ```bash
-curl -X GET "http://localhost:8000/dm/thread/THREAD_ID/messages?session_id=your_username&limit=20"
+curl -X GET "http://localhost:8000/dm/thread/THREAD_ID/messages?session_id=your_username&limit=20" \
+  -H "X-API-Key: your_secure_api_key_here"
 ```
 
 5. Mark thread as seen:
 ```bash
-curl -X POST "http://localhost:8000/dm/thread/THREAD_ID/mark-seen?session_id=your_username"
+curl -X POST "http://localhost:8000/dm/thread/THREAD_ID/mark-seen?session_id=your_username" \
+  -H "X-API-Key: your_secure_api_key_here"
 ```
 
 ## Security Notes

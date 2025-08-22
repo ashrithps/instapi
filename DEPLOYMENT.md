@@ -23,6 +23,7 @@
    INSTAGRAM_PASSWORD=your_instagram_password
    SESSION_FILE_PATH=/app/sessions/
    API_PORT=8000
+   APP_API_KEY=your_secure_api_key_here
    ENVIRONMENT=production
    ```
 
@@ -96,10 +97,12 @@ curl https://your-domain.com/health
 # Login (with 2FA if needed)
 curl -X POST "https://your-domain.com/auth/login" \
   -H "Content-Type: application/json" \
+  -H "X-API-Key: your_secure_api_key_here" \
   -d '{"verification_code": "123456"}'
 
 # Send DM
 curl -X POST "https://your-domain.com/dm/send?session_id=username" \
   -H "Content-Type: application/json" \
+  -H "X-API-Key: your_secure_api_key_here" \
   -d '{"recipient_username": "target", "message": "Hello!"}'
 ```
