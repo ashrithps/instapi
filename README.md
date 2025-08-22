@@ -86,6 +86,13 @@ Returns thread information including:
 - Last activity, unread count
 - Group status, muted status
 
+**Note**: This endpoint may be temporarily unavailable due to Instagram API validation issues. Use `/dm/search/{username}/messages` as an alternative for specific conversations.
+
+#### GET `/dm/recent-conversations?session_id={session_id}`
+Get guidance for recent conversations (workaround for threads endpoint issues)
+
+Returns helpful information for accessing conversations when the threads endpoint is unavailable.
+
 #### GET `/dm/thread/{thread_id}/messages?session_id={session_id}&limit=20`
 Get messages from a specific thread
 - `thread_id`: ID of the thread to read
